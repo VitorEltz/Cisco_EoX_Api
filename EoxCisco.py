@@ -50,7 +50,7 @@ def get_eox_details(access_token,serialnumber):
 # Critical = Quer dizer que o dispositivo esta expirado
 # High = Em 3 meses seu dispositivo ficara expirado
 # Medium = Em 6 meses seu dispositivo ficara expirado
-# Normal = Seu dispositovo esta com o tempo regular n
+# Normal = Seu dispositovo esta com o tempo regular.
 
 
 def timestamp_calc_function(string_test):
@@ -82,8 +82,8 @@ def timestamp_calc_function(string_test):
 
 
 
-client_id = 'mjp4rd26r5ccq39gevm42293' #Aqui coloque o client_id. Ex: 'sadasdadsadsafsdfsdfsfdsf' (coloque entre o codigo aspas simples)
-client_secret = 'mwUVKYyB7jRtPjZRgwzuQa24' #Aqui coloque o client_secret. Ex: 'sadasdadsadsafsdfsdfsfdsf' (coloque entre o codigo aspas simples)
+client_id = '__coloque_aqui_client_id__' #Coloque aqui o client_id. Ex: 'sadasdadsadsafsdfsdfsfdsf' (coloque entre o codigo aspas simples)
+client_secret = '__coloque_aqui_client_secret__' #Coloque aqui o client_secret. Ex: 'sadasdadsadsafsdfsdfsfdsf' (coloque entre o codigo aspas simples)
 
 #Aqui chama funcao que pega o token de autenticacao
 access_token = get_access_token(client_id,client_secret)
@@ -92,7 +92,10 @@ access_token = get_access_token(client_id,client_secret)
 ################################################################################################################################################
 ################################################################################################################################################
 #Caminho da pasta onde o arquivo "serial_numbers".json fica.
-folder_base = '/opt/Harpia/assesment/'
+#Para esse script e necessario ter um arquivo que contenha uma lista de serial_numbers, assim o script irá extrair as informacoes de cada serial number
+# Ex.: ["FOC1902S035", "FOC1902S03B", "FOC1902S03F"]
+
+folder_base = '/opt/'
 list_final = []
 
 #Percorre o caminho de pastas ate encontrar o arquivo serial_number.json
@@ -136,6 +139,6 @@ for root, dirnames, filenames in os.walk(folder_base):
 ################################################################################################################################################
 ################################################################################################################################################
 #Nessa sessao apenas vamos salvar o resultado do list_final e gerar um json
-result = '/opt/Harpia/assesment/result_json/node_hardware_eox.json'
+result = '/opt/node_hardware_eox.json'
 with open(result, 'w') as fp:
     json.dump(list_final, fp, indent=4)
